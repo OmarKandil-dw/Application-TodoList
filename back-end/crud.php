@@ -16,14 +16,18 @@
             $GLOBALS["conn"]->query($sql);
             }
         function deletetodo(){
-            $sql = "DELETE FROM list WHERE id_list ='$this->id_list'";
+            $sql = "DELETE FROM list WHERE id_list = $this->id_list";
+            $GLOBALS["conn"]->query($sql);
+            }
+
+        function edittodo(){
+            $sql = "UPDATE list SET tittle='$this->tittle' WHERE id_list =$this->id_list";
             $GLOBALS["conn"]->query($sql);
             }
         }
 
         if(isset($_POST["submit"])){
-                $tittle= $_POST['tittle'];
-                $new_obj = new TodoList(Null,$tittle,0);
+                $new_obj = new TodoList($_POST['tittle'],0);
                 $new_obj->addtodolist();
                 echo 'record added';
 
@@ -32,6 +36,12 @@
                 $new_obj = new TodoList($_POST['id_list'],Null,Null);
                 $new_obj->deletetodo();
                 echo 'record deleted';
+        } 
+
+        if(isset($_POST["update"])){
+                $new_obj = new TodoList($_POST['id_list'],$_POST['tittle'],Null);
+                $new_obj->edittodo();
+                echo 'record ypdated';
 
         } 
 
