@@ -1,3 +1,4 @@
+<?php include"connection.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +11,17 @@
 <style>
     body{
         margin : 50px;
-
     }
 </style>
 <body>
 
 
-<form class="form-inline">
+<form class="form-inline" method="POST" action="crud.php">
   
   <div class="form-group mx-sm-3 mb-2">
-    <input type="password" class="form-control" id="inputPassword2" placeholder="Ecrire votre text ici ">
+    <input type="text" name="tittle" class="form-control" id="inputPassword2" placeholder="Ecrire votre text ici ">
   </div>
-  <button type="submit" class="btn btn-primary mb-2">Envoyer</button>
+  <button type="submit" name="submit" class="btn btn-primary mb-2">Envoyer</button>
 </form>
     
     
